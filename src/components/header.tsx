@@ -1,4 +1,4 @@
-import { Home, ListPlus, SquareDashedBottomCode } from 'lucide-react'
+import { Home, List, SquareDashedBottomCode } from 'lucide-react'
 
 import { AccountMenu } from './account-menu'
 import { NavLink } from './nav-link'
@@ -18,9 +18,9 @@ export function Header() {
             <Home className="h-4 w-4" />
             Início
           </NavLink>
-          <NavLink to="/orders">
-            <ListPlus className="h-4 w-4" />
-            Nova campanha
+          <NavLink to="/campaigns">
+            <List className="h-4 w-4" />
+            Campanhas
           </NavLink>
         </nav>
 
