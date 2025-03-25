@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { AppLayout } from './pages/_layouts/app'
 import { AuthLayout } from './pages/_layouts/auth'
+import { NotFound } from './pages/404'
 import { CampaignOverview } from './pages/app/campaigns/campaign-overview'
 import { Campaigns } from './pages/app/campaigns/campaigns'
 import { Dashboard } from './pages/app/dashboard/dashboard'
@@ -11,6 +12,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
+    errorElement: <NotFound />,
     children: [
       { path: '/', element: <Dashboard /> },
       { path: '/campaigns', element: <Campaigns /> },
