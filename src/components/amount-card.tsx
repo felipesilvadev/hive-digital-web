@@ -16,7 +16,7 @@ export function AmountCard({ title, value }: AmountCardProps) {
       </CardHeader>
       <CardContent className="space-y-1">
         <span className="text-2xl font-bold tracking-tight">
-          {Intl.NumberFormat('pt-BR').format(value)}
+          {value.toLocaleString('pt-BR')}
         </span>
         <p className="text-muted-foreground text-xs"></p>
       </CardContent>

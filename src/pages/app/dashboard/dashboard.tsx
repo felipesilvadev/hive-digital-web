@@ -1,4 +1,4 @@
-import { AmountCard } from './amount-card'
+import { AmountCard } from '@/components/amount-card'
 
 export function Dashboard() {
   return (

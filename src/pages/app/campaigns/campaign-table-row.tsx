@@ -1,13 +1,20 @@
 import { Pencil, Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
 
 export function CampaignTableRow() {
+  const navigate = useNavigate()
+
   return (
     <TableRow>
       <TableCell>
-        <Button variant="outline" size="xs">
+        <Button
+          variant="outline"
+          size="xs"
+          onClick={() => navigate(`/campaign-overview/${1}`)}
+        >
           <Search className="h-3 w-3" />
           <span className="sr-only">Detalhes da campanha</span>
         </Button>
