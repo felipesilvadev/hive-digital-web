@@ -1,13 +1,16 @@
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { signIn } from '@/api/sign-in'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 const signInForm = z.object({
   email: z.string().email(),
+  password: z.string(),
 })
 
 type SignInForm = z.infer<typeof signInForm>
@@ -19,9 +22,12 @@ export function SignIn() {
     formState: { isSubmitting },
   } = useForm<SignInForm>()
 
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
+
   async function handleSignIn(data: SignInForm) {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log(data)
+    await authenticate(data)
 
     toast.success('Enviamos um link de autenticação para seu e-mail')
   }
@@ -39,6 +45,11 @@ export function SignIn() {
           <div className="space-y-2">
             <Label htmlFor="email">Seu e-mail</Label>
             <Input id="email" type="email" {...register('email')} />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Sua senha</Label>
+            <Input id="password" type="password" {...register('password')} />
           </div>
 
           <Button className="w-full" type="submit" disabled={isSubmitting}>
